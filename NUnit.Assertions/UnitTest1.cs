@@ -39,7 +39,7 @@ namespace NUnitTest
             string d = new String(c.Where(char.IsDigit).ToArray());         
             
                                 
-                Assert.That(Int32.Parse(d), Is.GreaterThan(100), "lol");
+                Assert.That(Int32.Parse(d), Is.GreaterThan(100));
            
             
         }
