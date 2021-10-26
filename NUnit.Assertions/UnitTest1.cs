@@ -14,6 +14,8 @@ namespace NUnitTest
         public IWebElement search => driver.FindElement(By.CssSelector("input[type=text]"));
         public IWebElement button => driver.FindElement(By.CssSelector("input[type=submit]"));
         public IWebElement result => driver.FindElement(By.Id("result-stats"));
+        public IWebElement time => driver.FindElement(By.CssSelector("#result-stats > nobr"));
+
 
         [SetUp]
         public void Setup()
@@ -32,10 +34,12 @@ namespace NUnitTest
             button.Click();
 
             string a = result.Text;
-            string b = new String(a.Where(char.IsDigit).ToArray());         
-            Console.WriteLine("Result ="+b);
+            string b = time.Text;
+            string c = result.Text.Remove(a.Length - b.Length);
+            string d = new String(c.Where(char.IsDigit).ToArray());         
+            Console.WriteLine("Result ="+d);
                       
-            if (Int64.Parse(b) > 100) {
+            if (Int32.Parse(d) > 100) {
                 Assert.Pass();
             }
             else
