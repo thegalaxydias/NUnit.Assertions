@@ -37,15 +37,10 @@ namespace NUnitTest
             string b = time.Text;
             string c = result.Text.Remove(a.Length - b.Length);
             string d = new String(c.Where(char.IsDigit).ToArray());         
-            Console.WriteLine("Result ="+d);
-                      
-            if (Int32.Parse(d) > 100) {
-                Assert.Pass();
-            }
-            else
-            {
-                Assert.Fail();
-            }
+            
+                                
+                Assert.That(Int32.Parse(d), Is.GreaterThan(100), "lol");
+           
             
         }
         
