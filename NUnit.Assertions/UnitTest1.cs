@@ -34,7 +34,15 @@ namespace NUnitTest
             string a = result.Text;
             string b = new String(a.Where(char.IsDigit).ToArray());         
             Console.WriteLine("Result ="+b);
-            Assert.Pass();
+                      
+            if (Int64.Parse(b) > 100) {
+                Assert.Pass();
+            }
+            else
+            {
+                Assert.Fail();
+            }
+            
         }
         
 
